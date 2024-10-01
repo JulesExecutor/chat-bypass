@@ -57,7 +57,7 @@
 <body>
     <div class="container">
         <h1>Roblox Chat Bypasser - Website</h1>
-        <textarea id="inputText" placeholder="Enter your text here..."></textarea>
+        <textarea id="inputText" placeholder="Bypass NOW"></textarea>
         <button onclick="convertAndCopy()">Bypass</button>
     </div>
     <script>
@@ -66,7 +66,7 @@
     'l': '🅻', 'm': '🅼', 'n': '🅽', 'o': '🅾', 'p': '🅿', 'q': '🆀', 'r': '🆁', 's': '🆂', 't': '🆃', 'u': '🆄', 'v': '🆅',
     'w': '🆆', 'x': '🆇', 'y': '🆈', 'z': '🆉',
     '1': '①', '2': '②', '3': '③', '4': '④', '5': '⑤', '6': '⑥', '7': '⑦', '8': '⑧', '9': '⑨', '0': '⓪'
-};
+}; // This is useless now loll
 
         function convertAndCopy() {
             const input = document.getElementById('inputText').value;
@@ -75,9 +75,11 @@
                 convertedText += styleMap[char.toLowerCase()] || char;
             }
 
-            // Copy to clipboard
-            navigator.clipboard.writeText("゘" + convertedText).then(() => {
-                alert('Copied! Paste into ROBLOX my nigga.');
+            const reversedText = convertedText.split('').reverse().join('') + " | Read Backwards";
+
+
+            navigator.clipboard.writeText(reversedText).then(() => {
+                alert('Copied! Paste in roblox NOW!');
             }, (err) => {
                 alert('Failed to copy text: ' + err);
             });
