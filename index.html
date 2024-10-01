@@ -13,7 +13,6 @@
             height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
-            transition: background-color 0.3s, color 0.3s;
         }
         .container {
             background-color: #fff;
@@ -26,7 +25,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: background-color 0.3s, color 0.3s;
         }
         h1 {
             color: #333;
@@ -54,21 +52,10 @@
         button:hover {
             background-color: #0056b3;
         }
-        .dark-mode {
-            background-color: #333;
-            color: #fff;
-        }
-        .dark-mode .container {
-            background-color: #444;
-            color: #fff;
-        }
-        .dark-mode textarea {
-            background-color: #666;
-            color: #fff;
-            border: 1px solid #555;
-        }
-        .dark-mode button {
-            background-color: #222;
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
         }
     </style>
 </head>
@@ -76,36 +63,23 @@
     <div class="container">
         <h1>Roblox Chat Bypasser - Website</h1>
         <textarea id="inputText" placeholder="Bypass NOW"></textarea>
-        <button onclick="convertAndCopy()">Bypass</button>
-        <br>
-        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        <button onclick="convertAndDisplay()">Bypass</button>
+        <p id="outputText"></p> <!-- This will display the reversed text -->
     </div>
     <script>
-    const styleMap = {
-    'a': '🅰', 'b': '🅱', 'c': '🅲', 'd': '🅳', 'e': '🅴', 'f': '🅵', 'g': '🅶', 'h': '🅷', 'i': '🅸', 'j': '🅹', 'k': '🅺',
-    'l': '🅻', 'm': '🅼', 'n': '🅽', 'o': '🅾', 'p': '🅿', 'q': '🆀', 'r': '🆁', 's': '🆂', 't': '🆃', 'u': '🆄', 'v': '🆅',
-    'w': '🆆', 'x': '🆇', 'y': '🆈', 'z': '🆉',
-    '1': '①', '2': '②', '3': '③', '4': '④', '5': '⑤', '6': '⑥', '7': '⑦', '8': '⑧', '9': '⑨', '0': '⓪'
-};
-
-        function convertAndCopy() {
+        function convertAndDisplay() {
             const input = document.getElementById('inputText').value;
-            let convertedText = '';
-            for (let char of input) {
-                convertedText += styleMap[char.toLowerCase()] || char;
-            }
+            const reversedText = input.split('').reverse().join('') + " | Read Backwards <3";
+            
+            // Display the reversed text
+            document.getElementById('outputText').textContent = reversedText;
 
-            const reversedText = convertedText.split('').reverse().join('') + " | Read Backwards";
-
+            // Copy to clipboard
             navigator.clipboard.writeText(reversedText).then(() => {
                 alert('Copied! Paste in roblox NOW!');
             }).catch((err) => {
                 alert('Failed to copy text: ' + err);
             });
-        }
-
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
         }
     </script>
 </body>
