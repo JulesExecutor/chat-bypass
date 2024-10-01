@@ -13,6 +13,7 @@
             height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
+            transition: background-color 0.3s, color 0.3s;
         }
         .container {
             background-color: #fff;
@@ -25,6 +26,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            transition: background-color 0.3s, color 0.3s;
         }
         h1 {
             color: #333;
@@ -52,6 +54,22 @@
         button:hover {
             background-color: #0056b3;
         }
+        .dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+        .dark-mode .container {
+            background-color: #444;
+            color: #fff;
+        }
+        .dark-mode textarea {
+            background-color: #666;
+            color: #fff;
+            border: 1px solid #555;
+        }
+        .dark-mode button {
+            background-color: #222;
+        }
     </style>
 </head>
 <body>
@@ -59,6 +77,8 @@
         <h1>Roblox Chat Bypasser - Website</h1>
         <textarea id="inputText" placeholder="Bypass NOW"></textarea>
         <button onclick="convertAndCopy()">Bypass</button>
+        <br>
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
     </div>
     <script>
     const styleMap = {
@@ -66,7 +86,7 @@
     'l': '🅻', 'm': '🅼', 'n': '🅽', 'o': '🅾', 'p': '🅿', 'q': '🆀', 'r': '🆁', 's': '🆂', 't': '🆃', 'u': '🆄', 'v': '🆅',
     'w': '🆆', 'x': '🆇', 'y': '🆈', 'z': '🆉',
     '1': '①', '2': '②', '3': '③', '4': '④', '5': '⑤', '6': '⑥', '7': '⑦', '8': '⑧', '9': '⑨', '0': '⓪'
-}; // This is useless now loll
+};
 
         function convertAndCopy() {
             const input = document.getElementById('inputText').value;
@@ -77,12 +97,15 @@
 
             const reversedText = convertedText.split('').reverse().join('') + " | Read Backwards";
 
-
             navigator.clipboard.writeText(reversedText).then(() => {
                 alert('Copied! Paste in roblox NOW!');
-            }, (err) => {
+            }).catch((err) => {
                 alert('Failed to copy text: ' + err);
             });
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
         }
     </script>
 </body>
