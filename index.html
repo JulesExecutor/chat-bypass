@@ -96,7 +96,7 @@
             const reversedText = input.split('').reverse().join('') + " | Read Backwards <3";
             
             // Display the reversed text
-            document.getElementById('outputText').textContent = reversedText;
+            document.getElementById('outputText').textContent = "Output: " + reversedText;
 
             // Copy to clipboard
             navigator.clipboard.writeText(reversedText).then(() => {
